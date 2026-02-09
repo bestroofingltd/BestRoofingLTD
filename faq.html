@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MTZZ27EZZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9MTZZ27EZZ');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Frequently Asked Questions | Best Roofing Ltd Canterbury</title>
+    <meta name="description"
+        content="Common questions about roofing repairs, costs, and timelines in Canterbury & Kent. Get answers from Best Roofing Ltd.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .faq-section {
+            padding: 60px 0;
+            background: #f9f9f9;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        /* The Question (Clickable) */
+        .faq-question {
+            background: white;
+            color: #003366;
+            font-weight: bold;
+            padding: 20px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* The + symbol */
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #d9534f;
+            font-weight: bold;
+        }
+
+        /* Active state (when open) */
+        .faq-question.active::after {
+            content: '-';
+        }
+
+        /* The Answer (Hidden by default) */
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: #fff;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .faq-answer p {
+            margin: 20px 0;
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Do you offer free quotes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we offer free, no-obligation quotes for all roofing work in Canterbury and Kent. We will visit your property, assess the issue, and provide a transparent price."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Do you do emergency roof repairs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we understand that a leaking roof is urgent. We prioritize emergency repairs to secure your home and prevent water damage."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Are you fully insured?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. We hold £5 Million Public Liability Insurance, giving you complete peace of mind while we work on your property."
+        }
+      }, {
+        "@type": "Question",
+        "name": "How long does a new roof take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A standard terraced or semi-detached house usually takes 3-5 days for a complete re-roof, depending on the weather and complexity."
+        }
+      }]
+    }
+    </script>
+</head>
+
+<body>
+
+    <header id="main-header">
+        <div class="container navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <svg class="logo-svg" viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                        <rect class="chimney" x="200" y="40" width="30" height="60" />
+                        <path id="roof" class="roof-path" d="M 20 100 L 150 20 L 280 100" />
+                        <text class="logo-text" x="150" y="140" text-anchor="middle">Best Roofing Ltd</text>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="hamburger" id="hamburger-btn">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+                    <li><a href="index.html#services" onclick="toggleMenu()">Services</a></li>
+                    <li><a href="projects.html" onclick="toggleMenu()">Projects</a></li>
+                    <li><a href="faq.html" class="active" onclick="toggleMenu()">FAQ</a></li>
+                    <li><a href="#contact" class="cta-button" onclick="toggleMenu()">Get a Quote</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero"
+        style="min-height: 40vh; background-image: linear-gradient(rgba(0,51,102,0.8), rgba(0,51,102,0.8)), url('images/new-roof-installation.webp'); display: flex; align-items: center;">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <p>Got a question about your roof? We have the answers.</p>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container faq-container">
+
+            <div class="faq-item">
+                <button class="faq-question">Do you offer free quotes?</button>
+                <div class="faq-answer">
+                    <p>Yes! We offer completely free, no-obligation quotes. Just give us a call or fill out the form,
+                        and we will arrange a time to visit your property, assess the roof, and give you a fixed price.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">Do you handle emergency repairs?</button>
+                <div class="faq-answer">
+                    <p>Yes, we prioritize emergency calls for leaks and storm damage. If water is entering your home,
+                        call us immediately on <strong>01227 806122</strong> and we will do our best to secure the roof
+                        same-day.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">Are you insured?</button>
+                <div class="faq-answer">
+                    <p>We hold full Public Liability Insurance up to £5 Million. We also offer guarantees on all new
+                        roofs (usually 20 years depending on materials) and repairs.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">What areas do you cover?</button>
+                <div class="faq-answer">
+                    <p>We are based in Adisham, Canterbury, but we cover the whole of East Kent including Whitstable,
+                        Herne Bay, Faversham, Ashford, Dover, Deal, Sandwich, and Thanet.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Still have questions?</h2>
+            <p style="text-align: center; margin-bottom: 30px;">Give us a call or send a message.</p>
+            <div class="contact-container">
+                <div class="contact-form" style="margin: 0 auto; float: none;">
+                    <form action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="e302cd88-66d5-494f-ae09-132fd923168b">
+                        <input type="hidden" name="subject" value="Question from FAQ Page - Best Roofing Ltd">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="tel" name="phone" placeholder="Phone Number" required>
+                        <textarea name="message" rows="4" placeholder="Your Question..." required></textarea>
+                        <button type="submit">Ask Us</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: #222; color: #fff; padding: 40px 0; font-size: 0.9rem; text-align: center;">
+        <div class="container">
+            <p>&copy; 2026 <strong>Best Roofing Ltd</strong>. All Rights Reserved.</p>
+            <p>Registered in England & Wales. Company No: <strong>14284297</strong></p>
+            <p>Registered Office: Berry & Co Sterling House, 7 Ashford Road, Maidstone, Kent, United Kingdom, ME14
+                5BJ</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+        var acc = document.getElementsByClassName("faq-question");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>
