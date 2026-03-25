@@ -70,3 +70,96 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// --- Image Carousel Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Find every carousel on the page
+    const carousels = document.querySelectorAll('.image-carousel');
+
+    carousels.forEach(carousel => {
+        const images = carousel.querySelectorAll('.carousel-img');
+        const prevBtn = carousel.querySelector('.prev');
+        const nextBtn = carousel.querySelector('.next');
+        let currentIndex = 0;
+        let slideInterval;
+
+        // Function to change the image
+        function showSlide(index) {
+            images[currentIndex].classList.remove('active');
+
+            // Math to allow looping back to the start/end
+            currentIndex = (index + images.length) % images.length;
+
+            images[currentIndex].classList.add('active');
+        }
+
+        function nextSlide() { showSlide(currentIndex + 1); }
+        function prevSlide() { showSlide(currentIndex - 1); }
+
+        // Start the 3-second auto timer
+        function startSlide() {
+            slideInterval = setInterval(nextSlide, 3000); // 3000ms = 3 seconds
+        }
+
+        // Reset timer if the user manually clicks an arrow
+        function resetTimer() {
+            clearInterval(slideInterval);
+            startSlide();
+        }
+
+        // Click events for the buttons
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetTimer();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetTimer();
+        });
+
+        // Kick off the auto-rotation
+        startSlide();
+    });
+});
+
+// --- Collapsible Projects Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+    const projectToggles = document.querySelectorAll('.project-toggle');
+
+    projectToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            // Toggle the active class (which turns the '+' to an 'x')
+            toggle.classList.toggle('active');
+
+            // Find the content div immediately below the button
+            const content = toggle.nextElementSibling;
+
+            // Toggle the display
+            if (toggle.classList.contains('active')) {
+                content.style.display = 'block';
+            } else {
+                content.style.display = 'none';
+            }
+        });
+    });
+});
+
+// --- FAQ Accordion Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+    const faqs = document.querySelectorAll(".faq-question");
+
+    faqs.forEach(faq => {
+        faq.addEventListener("click", function () {
+            this.classList.toggle("active");
+
+            const panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    });
+});
