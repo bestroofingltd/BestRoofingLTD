@@ -1,652 +1,1155 @@
-       :root {
-           --primary-color: #0c2d48;
-           /* Deep Navy Blue */
-           --secondary-color: #b1c7d6;
-           /* Light Blue-Grey */
-           --accent-color: #d9534f;
-           /* Muted Red for Call-to-Actions */
-           --text-color: #333;
-           --light-bg: #f4f4f4;
-           --header-height: 100px;
-           /* Starting height */
-           --header-shrink: 70px;
-           /* Scrolled height */
-       }
-
-       * {
-           margin: 0;
-           padding: 0;
-           box-sizing: border-box;
-       }
-
-       html {
-           scroll-behavior: smooth;
-           width: 100%;
-       }
-
-       body {
-           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-           line-height: 1.6;
-           color: var(--text-color);
-           padding-top: var(--header-height);
-           /* CRITICAL FIX: Prevent horizontal scrolling */
-           overflow-x: hidden;
-           width: 100%;
-       }
-
-       a {
-           text-decoration: none;
-           color: inherit;
-       }
-
-       ul {
-           list-style: none;
-       }
-
-       /* --- Header & Nav --- */
-       header {
-           background: var(--primary-color);
-           color: white;
-           position: fixed;
-           top: 0;
-           left: 0;
-           width: 100%;
-           z-index: 1000;
-           transition: all 0.4s ease;
-           height: var(--header-height);
-           display: flex;
-           align-items: center;
-           border-bottom: 0px solid white;
-       }
-
-       /* Scrolled State */
-       header.scrolled {
-           height: var(--header-shrink);
-           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-       }
-
-       .container {
-           width: 90%;
-           max-width: 1100px;
-           margin: auto;
-       }
-
-       .navbar {
-           display: flex;
-           justify-content: space-between;
-           align-items: center;
-           width: 100%;
-           position: relative;
-       }
-
-       /* --- SVG Logo Styling --- */
-       .logo-svg {
-           width: 180px;
-           height: auto;
-           transition: all 0.5s ease;
-           display: block;
-       }
-
-       .roof-path {
-           fill: none;
-           stroke: white;
-           stroke-width: 8;
-           stroke-linecap: round;
-           stroke-linejoin: round;
-           transition: d 0.5s ease;
-       }
-
-       .chimney {
-           fill: white;
-           transition: opacity 0.3s;
-       }
-
-       .logo-text {
-           fill: white;
-           font-family: sans-serif;
-           font-weight: bold;
-           font-size: 24px;
-           text-transform: uppercase;
-           letter-spacing: 1px;
-           opacity: 1;
-           transition: opacity 0.3s;
-       }
-
-       /* Scrolled Logo States */
-       header.scrolled .logo-svg {
-           width: 50px;
-       }
-
-       header.scrolled .chimney {
-           opacity: 0;
-       }
-
-       header.scrolled .logo-text {
-           opacity: 0;
-           display: none;
-       }
-
-       /* --- Desktop Navigation --- */
-       .nav-links {
-           display: flex;
-           align-items: center;
-       }
-
-       .nav-links a {
-           margin-left: 20px;
-           font-weight: 500;
-           font-size: 1rem;
-           transition: color 0.3s;
-           white-space: nowrap;
-       }
-
-       .nav-links a:hover {
-           color: var(--secondary-color);
-       }
-
-       .cta-button {
-           background: var(--accent-color);
-           color: white;
-           padding: 10px 20px;
-           border-radius: 5px;
-           font-weight: bold;
-       }
-
-       .cta-button:hover {
-           background-color: #c9302c;
-       }
-
-       /* --- Hamburger Menu (Hidden on Desktop) --- */
-       .hamburger {
-           display: none;
-           cursor: pointer;
-           flex-direction: column;
-           gap: 5px;
-           z-index: 1001;
-       }
-
-       .hamburger div {
-           width: 30px;
-           height: 3px;
-           background-color: white;
-           transition: 0.4s;
-       }
-
-       .sticky-call-btn {
-           display: none;
-           /* Hidden by default (on desktop) */
-           position: fixed;
-           bottom: 0;
-           left: 0;
-           width: 100%;
-           background-color: var(--accent-color);
-           /* Uses your Red accent color */
-           color: white;
-           text-align: center;
-           padding: 15px;
-           font-size: 1.2rem;
-           font-weight: bold;
-           z-index: 9999;
-           /* Ensures it sits on top of everything */
-           box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
-           text-decoration: none;
-           transition: background-color 0.3s;
-       }
-
-       .sticky-call-btn:hover {
-           background-color: #c9302c;
-           /* Slightly darker red on tap */
-       }
-
-       .sticky-call-btn span {
-           margin-right: 10px;
-       }
-
-       /* Show only on Mobile */
-       @media (max-width: 768px) {
-           .sticky-call-btn {
-               display: block;
-               /* Show the button */
-           }
-
-           /* Add a little padding to the bottom of the body so the button doesn't cover the footer text */
-           body {
-               padding-bottom: 60px;
-           }
-       }
-
-       /* --- Mobile Styles --- */
-       @media (max-width: 768px) {
-           .hamburger {
-               display: flex;
-           }
-
-           /* Adjust Logo size for mobile */
-           .logo-svg {
-               width: 140px;
-           }
-
-           /* Mobile Menu Container */
-           .nav-links {
-               position: absolute;
-               top: 100%;
-               /* Position directly below header */
-               left: 0;
-               width: 100%;
-               background-color: var(--primary-color);
-               flex-direction: column;
-               align-items: center;
-               max-height: 0;
-               overflow: hidden;
-               transition: max-height 0.4s ease-in-out;
-               box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-           }
-
-           .nav-links.mobile-menu-active {
-               max-height: 400px;
-               padding-bottom: 20px;
-               border-bottom: 4px solid var(--accent-color);
-           }
-
-           .nav-links li {
-               margin: 15px 0;
-               width: 100%;
-               text-align: center;
-           }
-
-           .nav-links a {
-               margin-left: 0;
-               font-size: 1.2rem;
-               display: block;
-           }
-
-           .hero h1 {
-               font-size: 2rem;
-           }
-       }
-
-       /* --- Page Sections --- */
-       .hero {
-           background-color: var(--secondary-color);
-           padding: 100px 0;
-           text-align: center;
-           background-image: linear-gradient(rgba(12, 45, 72, 0.7), rgba(12, 45, 72, 0.7)), url('images/slate-roof-hero.jpg');
-
-           background-size: cover;
-           background-position: center;
-           color: white;
-       }
-
-       .hero h1 {
-           font-size: 3rem;
-           margin-bottom: 1rem;
-       }
-
-       .hero p {
-           font-size: 1.2rem;
-           margin-bottom: 2rem;
-       }
-
-       .services {
-           padding: 60px 0;
-           background: #fff;
-       }
-
-       .section-title {
-           text-align: center;
-           margin-bottom: 40px;
-           color: var(--primary-color);
-       }
-
-       /* FIX: Ensure grid doesn't force width on small screens */
-       .services-grid {
-           display: grid;
-           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-           gap: 20px;
-       }
-
-       .service-card {
-           background: var(--light-bg);
-           padding: 20px;
-           text-align: center;
-           border-radius: 8px;
-           transition: 0.3s;
-       }
-
-       .service-card:hover {
-           transform: translateY(-5px);
-           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-       }
-
-       .service-card h3 {
-           color: var(--primary-color);
-           margin-bottom: 10px;
-       }
-
-       .about {
-           padding: 60px 0;
-           background: var(--light-bg);
-           text-align: center;
-       }
-
-       .contact {
-           padding: 60px 0;
-       }
-
-       .contact-container {
-           display: flex;
-           flex-wrap: wrap;
-           justify-content: space-between;
-           gap: 40px;
-       }
-
-       /* FIX: Removed fixed min-width for mobile, set to 100% via media query below */
-       .contact-info,
-       .contact-form {
-           flex: 1;
-       }
-
-       input,
-       textarea {
-           width: 100%;
-           padding: 10px;
-           margin-bottom: 15px;
-           border: 1px solid #ccc;
-           border-radius: 4px;
-           font-family: inherit;
-       }
-
-       button[type="submit"] {
-           background: var(--primary-color);
-           color: white;
-           padding: 10px 20px;
-           border: none;
-           cursor: pointer;
-           font-size: 1rem;
-           border-radius: 4px;
-           width: 100%;
-       }
-
-       button[type="submit"]:hover {
-           background: #0a2339;
-       }
-
-       /* Media Query for Contact Form sizing on mobile */
-       @media (max-width: 768px) {
-
-           .contact-info,
-           .contact-form {
-               flex-basis: 100%;
-               min-width: 100%;
-               /* Forces full width on mobile so it doesn't overflow */
-           }
-
-           .services-grid {
-               grid-template-columns: 1fr;
-               /* Single column on mobile */
-           }
-       }
-
-       footer {
-           background: #222;
-           color: #fff;
-           text-align: center;
-           padding: 20px 0;
-           margin-top: auto;
-       }
-
-       /* --- Tabbed Services Section --- */
-
-       .tabs-container {
-           display: flex;
-           justify-content: center;
-           flex-wrap: wrap;
-           gap: 15px;
-           margin-bottom: 30px;
-       }
-
-       .tab-btn {
-           background-color: white;
-           border: 2px solid var(--primary-color);
-           /* Navy Blue border */
-           color: var(--primary-color);
-           padding: 12px 25px;
-           border-radius: 50px;
-           /* Makes them pill-shaped */
-           font-size: 1rem;
-           font-weight: bold;
-           cursor: pointer;
-           transition: all 0.3s ease;
-       }
-
-       /* Hover state */
-       .tab-btn:hover {
-           background-color: #eef4f8;
-           transform: translateY(-2px);
-       }
-
-       /* Active State (The selected tab) */
-       .tab-btn.active {
-           background-color: var(--primary-color);
-           /* Fill with Navy Blue */
-           color: white;
-           box-shadow: 0 4px 10px rgba(12, 45, 72, 0.4);
-       }
-
-       /* The Grey Content Box */
-       .tab-content-wrapper {
-           background-color: #5d666d;
-           /* Dark Grey background like your image */
-           color: white;
-           border-radius: 15px;
-           overflow: hidden;
-           /* Keeps image inside rounded corners */
-           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-           min-height: 400px;
-       }
-
-       /* Individual Content Panels (Hidden by default) */
-       .tab-content {
-           display: none;
-           /* Hidden */
-           display: flex;
-           /* Flex is used when active, handled by JS */
-           flex-direction: row;
-           opacity: 0;
-           transition: opacity 0.4s ease-in;
-       }
-
-       /* The 'Active' class makes it visible */
-       .tab-content.active {
-           display: flex;
-           /* Show it */
-           opacity: 1;
-           /* Fade in */
-           animation: fadeIn 0.5s ease-in-out;
-       }
-
-       @keyframes fadeIn {
-           from {
-               opacity: 0;
-               transform: translateY(10px);
-           }
-
-           to {
-               opacity: 1;
-               transform: translateY(0);
-           }
-       }
-
-       .content-text {
-           flex: 1;
-           padding: 40px;
-       }
-
-       .content-text h3 {
-           font-size: 2rem;
-           margin-bottom: 10px;
-           color: white;
-       }
-
-       .content-text h4 {
-           font-size: 0.9rem;
-           text-transform: uppercase;
-           letter-spacing: 1px;
-           margin-bottom: 20px;
-           color: #b1c7d6;
-           /* Light blue accent text */
-           font-weight: 700;
-       }
-
-       .content-text p {
-           margin-bottom: 20px;
-           line-height: 1.8;
-           color: #f0f0f0;
-       }
-
-       .service-list {
-           list-style: none;
-           margin-top: 20px;
-       }
-
-       .service-list li {
-           position: relative;
-           padding-left: 30px;
-           margin-bottom: 12px;
-           font-weight: 500;
-       }
-
-       /* Custom Bullet Point (Arrow) */
-       .service-list li::before {
-           content: '➤';
-           /* You can also use an SVG here */
-           position: absolute;
-           left: 0;
-           color: var(--secondary-color);
-           /* Light Blue arrow */
-           font-size: 0.8rem;
-           top: 4px;
-       }
-
-       .content-image {
-           flex: 1;
-           min-height: 300px;
-       }
-
-       .content-image img {
-           width: 100%;
-           height: 100%;
-           object-fit: cover;
-           /* Ensures image covers the box without stretching */
-           display: block;
-       }
-
-       /* Mobile Responsiveness for Tabs */
-       @media (max-width: 768px) {
-           .tab-content.active {
-               flex-direction: column-reverse;
-               /* Stack text below image on mobile */
-           }
-
-           .content-image {
-               height: 250px;
-           }
-
-           .content-text {
-               padding: 30px 20px;
-           }
-
-           .content-text h3 {
-               font-size: 1.5rem;
-           }
-
-           .tab-btn {
-               padding: 10px 15px;
-               font-size: 0.9rem;
-               flex: 1 1 auto;
-               /* Allow buttons to shrink/grow */
-           }
-       }
-
-       /* --- Process / How It Works Section --- */
-
-       .process-container {
-           display: flex;
-           justify-content: space-between;
-           align-items: flex-start;
-           gap: 20px;
-           margin-top: 40px;
-           position: relative;
-       }
-
-       .process-step {
-           flex: 1;
-           background: white;
-           padding: 30px 20px;
-           border-radius: 10px;
-           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-           transition: transform 0.3s ease;
-           z-index: 2;
-           /* Sits above lines if we add them */
-       }
-
-       .process-step:hover {
-           transform: translateY(-5px);
-           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-       }
-
-       .step-icon {
-           width: 50px;
-           height: 50px;
-           background-color: var(--accent-color);
-           /* Red */
-           color: white;
-           font-size: 1.5rem;
-           font-weight: bold;
-           border-radius: 50%;
-           display: flex;
-           align-items: center;
-           justify-content: center;
-           margin: 0 auto 20px auto;
-           /* Centered */
-           box-shadow: 0 4px 10px rgba(217, 83, 79, 0.4);
-       }
-
-       .process-step h3 {
-           color: var(--primary-color);
-           margin-bottom: 15px;
-           font-size: 1.3rem;
-       }
-
-       .process-step p {
-           font-size: 0.95rem;
-           color: #666;
-       }
-
-       .step-arrow {
-           font-size: 2rem;
-           color: var(--secondary-color);
-           align-self: center;
-           padding-bottom: 20px;
-           /* Adjust alignment */
-           font-weight: bold;
-       }
-
-       /* Mobile Responsiveness for Process */
-       @media (max-width: 768px) {
-           .process-container {
-               flex-direction: column;
-               gap: 30px;
-           }
-
-           .step-arrow {
-               transform: rotate(90deg);
-               /* Point arrow down */
-               margin: -10px 0;
-               /* Tighten gap */
-           }
-
-           .process-step {
-               width: 100%;
-           }
-       }
+/* =========================================
+   BASE & VARIABLES
+========================================= */
+:root {
+    --primary-color: #0c2d48;
+    /* Deep Navy Blue */
+    --secondary-color: #b1c7d6;
+    /* Light Blue-Grey */
+    --accent-color: #d9534f;
+    /* Muted Red for Call-to-Actions */
+    --accent-hover: #c9302c;
+    /* Darker Red for hover states */
+    --text-color: #333;
+    --light-bg: #f8fafc;
+    /* Slightly brightened for a cleaner look */
+    --header-height: 100px;
+    --header-shrink: 70px;
+
+    /* Elegant Fonts */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', Tahoma, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    width: 100%;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-color);
+    padding-top: var(--header-height);
+    overflow-x: hidden;
+    width: 100%;
+    background-color: white;
+}
+
+/* =========================================
+   TYPOGRAPHY & GLOBAL ELEMENTS
+========================================= */
+h1,
+h2,
+h3,
+.logo-text,
+.section-title {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* =========================================
+   HEADER & NAVIGATION
+========================================= */
+header {
+    background: var(--primary-color);
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.4s ease;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header.scrolled {
+    height: var(--header-shrink);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+/* SVG Logo Styling */
+.logo-svg {
+    width: 180px;
+    height: auto;
+    transition: all 0.5s ease;
+    display: block;
+}
+
+.roof-path {
+    fill: none;
+    stroke: white;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: d 0.5s ease;
+}
+
+.chimney {
+    fill: var(--accent-color);
+    transition: opacity 0.3s;
+}
+
+.logo-text {
+    fill: white;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 24px;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+header.scrolled .logo-svg {
+    width: 55px;
+}
+
+header.scrolled .chimney {
+    opacity: 0;
+}
+
+header.scrolled .logo-text {
+    opacity: 0;
+    display: none;
+}
+
+/* Desktop Navigation */
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    margin-left: 25px;
+    font-weight: 500;
+    font-size: 1rem;
+    color: white;
+    transition: color 0.3s;
+    white-space: nowrap;
+}
+
+.nav-links a:hover {
+    color: var(--secondary-color);
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 1001;
+}
+
+.hamburger div {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+.cta-button {
+    background: var(--accent-color);
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: 600;
+    display: inline-block;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover,
+.submit-btn:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+.cta-button.secondary {
+    background: transparent;
+    border: 2px solid white;
+    margin-left: 15px;
+}
+
+.cta-button.secondary:hover {
+    background: white;
+    color: var(--primary-color) !important;
+}
+
+/* =========================================
+   HERO SECTION & TRUST BAR
+========================================= */
+.hero {
+    background: linear-gradient(rgba(12, 45, 72, 0.8), rgba(12, 45, 72, 0.6)), url('images/slate-roof-hero.jpg') center/cover;
+    padding: 120px 0;
+    text-align: center;
+    color: white;
+}
+
+.hero-subtitle {
+    color: var(--secondary-color);
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 2.5rem auto;
+    color: #f0f0f0;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.trust-bar {
+    background: var(--primary-color);
+    color: white;
+    padding: 15px 0;
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.trust-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    text-align: center;
+}
+
+.trust-container span {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* =========================================
+   SECTION FORMATTING
+========================================= */
+.services,
+.contact {
+    padding: 80px 0;
+    background: white;
+}
+
+.about {
+    padding: 80px 0;
+    background: var(--light-bg);
+    text-align: center;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--accent-color);
+    margin: 15px auto 0;
+}
+
+.lead-text {
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* =========================================
+   ELEGANT TABBED SERVICES (ANTI-JUMPING)
+========================================= */
+/* 1. Swipeable Tab Buttons */
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* Allows stacking on desktop if screen gets narrow */
+    gap: 15px;
+    margin-bottom: 50px;
+    /* A bit more breathing room */
+}
+
+.tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Space between icon and text */
+    background-color: white;
+    border: 2px solid #e2e8f0;
+    /* Softer, slightly thicker border */
+    color: var(--primary-color);
+    padding: 16px 28px;
+    /* Bigger padding for a larger touch target */
+    border-radius: 10px;
+    /* Elegant rounded-rectangle instead of a pill */
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    /* Very subtle depth */
+}
+
+.tab-btn:hover {
+    border-color: var(--secondary-color);
+    background-color: var(--light-bg);
+    transform: translateY(-3px);
+    /* Makes the button lift up slightly */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+}
+
+.tab-btn:hover svg {
+    transform: scale(1.15);
+    /* Gives the icon a neat little pop effect */
+}
+
+.tab-btn svg {
+    width: 22px;
+    height: 22px;
+    transition: transform 0.3s ease;
+}
+
+.tab-btn.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 8px 20px rgba(12, 45, 72, 0.25);
+}
+
+/* Mobile Responsiveness for New Buttons */
+@media (max-width: 768px) {
+    .tabs-container {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        /* Forces them onto a single swipeable line */
+        overflow-x: auto;
+        padding-bottom: 15px;
+        scroll-snap-type: x mandatory;
+        /* Makes swiping snap cleanly */
+    }
+
+    .tab-btn {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        /* Lines up nicely when user swipes */
+    }
+}
+
+/* 2. The Content Card */
+.tab-content-wrapper {
+    background-color: #f1f5f9;
+    /* Soft grey background */
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.tab-content {
+    display: none;
+    width: 100%;
+}
+
+.tab-content.active {
+    display: flex;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 3. Text Area Formatting */
+.content-text {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content-text h3 {
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+}
+
+.content-text h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+    font-family: var(--font-body);
+    font-weight: 700;
+}
+
+.content-text p {
+    margin-bottom: 20px;
+    color: #475569;
+}
+
+.service-list {
+    margin-top: 15px;
+}
+
+.service-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.service-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+    top: 0;
+}
+
+/* 4. Magic Image Fix */
+.content-image {
+    flex: 1;
+    max-width: 50%;
+    position: relative;
+}
+
+.content-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (min-width: 769px) {
+    .tab-content.active {
+        min-height: 480px;
+    }
+}
+
+/* =========================================
+   PROJECTS CTA STRIP
+========================================= */
+.cta-strip {
+    /* The linear-gradient creates a dark Navy Blue overlay. 
+       Change the '0.85' to make the overlay darker (0.9) or lighter (0.6).
+       Don't forget to update the image name to your actual file! */
+    background: linear-gradient(rgba(12, 45, 72, 0.85), rgba(12, 45, 72, 0.85)), url('images/services/project_banner.jpg') center/cover no-repeat;
+
+    /* Adds a cool parallax-like fixed effect on desktop (optional, but looks premium!) */
+    background-attachment: fixed;
+
+    color: white;
+    text-align: center;
+    padding: 90px 0;
+    /* Slightly increased padding to show off more of the image */
+    border-top: 4px solid var(--accent-color);
+}
+
+.cta-strip h2 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 2.2rem;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    /* Drops a shadow so text pops off the image */
+}
+
+.cta-strip p {
+    color: #e2e8f0;
+    /* A crisp, bright grey that reads well on dark images */
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================================
+   PROCESS / HOW IT WORKS
+========================================= */
+.process-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.process-step {
+    flex: 1;
+    background: white;
+    padding: 40px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.process-step:hover {
+    transform: translateY(-8px);
+}
+
+.step-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto;
+}
+
+.process-step h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.process-step p {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+/* =========================================
+   CONTACT FORM
+========================================= */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+}
+
+.info-card {
+    background: var(--light-bg);
+    padding: 40px;
+    border-radius: 8px;
+    border-top: 4px solid var(--primary-color);
+}
+
+.info-card h3 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.info-card hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 25px 0;
+}
+
+.elegant-form .form-group {
+    margin-bottom: 25px;
+}
+
+.elegant-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+}
+
+.elegant-form input,
+.elegant-form textarea {
+    width: 100%;
+    padding: 14px 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s;
+    background: var(--light-bg);
+}
+
+.elegant-form input:focus,
+.elegant-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(12, 45, 72, 0.1);
+}
+
+.submit-btn {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+/* =========================================
+   EXPANDED FOOTER
+========================================= */
+.site-footer {
+    background: #111827;
+    color: #9ca3af;
+    padding: 70px 0 40px 0;
+    text-align: left;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.footer-heading {
+    color: white;
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-col p {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.footer-col strong {
+    color: white;
+}
+
+.footer-links-list {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links-list li {
+    margin-bottom: 12px;
+}
+
+.footer-links-list a {
+    color: #9ca3af;
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.footer-links-list a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.gmb-link {
+    color: #fbbf24 !important;
+    /* A nice star-gold color for Google */
+    font-weight: 600;
+}
+
+.gmb-link:hover {
+    color: #f59e0b !important;
+}
+
+/* =========================================
+   STICKY CALL BUTTON
+========================================= */
+.sticky-call-btn {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--accent-color);
+    color: white;
+    text-align: center;
+    padding: 18px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    z-index: 9999;
+    box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+========================================= */
+@media (max-width: 900px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Header Mobile */
+    .hamburger {
+        display: flex;
+    }
+
+    .logo-svg {
+        width: 140px;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+        flex-direction: column;
+        align-items: center;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.mobile-menu-active {
+        max-height: 400px;
+        padding-bottom: 20px;
+        border-bottom: 4px solid var(--accent-color);
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        margin-left: 0;
+        font-size: 1.2rem;
+        display: block;
+    }
+
+    /* Hero & Trust Bar Mobile */
+    .hero {
+        padding: 100px 0 60px 0;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .trust-container {
+        justify-content: center;
+    }
+
+    .trust-container span {
+        width: 45%;
+    }
+
+    /* Services Tabs Mobile - Grid Layout */
+    .tabs-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* Creates a perfect 2-column grid */
+        gap: 12px;
+        padding-bottom: 20px;
+    }
+
+    .tab-btn {
+        display: flex;
+        flex-direction: column;
+        /* Stacks the icon above the text */
+        justify-content: center;
+        padding: 15px 10px;
+        font-size: 0.9rem;
+        white-space: normal;
+        /* Allows long text to wrap onto two lines */
+        text-align: center;
+        gap: 8px;
+        /* Space between the icon and text */
+    }
+
+    .tab-btn svg {
+        width: 26px;
+        /* Slightly larger icon for mobile */
+        height: 26px;
+        margin: 0;
+    }
+
+    .tab-content.active {
+        flex-direction: column-reverse;
+    }
+
+    .tab-btn {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        /* Aligns the button when swiping stops */
+    }
+
+    .tab-content.active {
+        flex-direction: column-reverse;
+    }
+
+    .content-image {
+        max-width: 100%;
+        height: 280px;
+        flex: none;
+    }
+
+    /* NOTE: Removed the 'position: relative' rule here so the carousel can stack images! */
+    .content-image img {
+        height: 280px;
+    }
+
+    .content-text {
+        padding: 40px 25px;
+    }
+
+    .content-text h3 {
+        font-size: 1.8rem;
+    }
+
+    /* Process Mobile */
+    .process-container {
+        flex-direction: column;
+    }
+
+    /* Sticky Call */
+    .sticky-call-btn {
+        display: block;
+    }
+
+    body {
+        padding-bottom: 60px;
+    }
+}
+
+/* <-- THIS BRACKET CLOSES THE MOBILE SECTION */
+
+
+/* =========================================
+   IMAGE CAROUSEL STYLING (MUST BE OUTSIDE MOBILE QUERY)
+========================================= */
+.image-carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    /* Smooth fade effect */
+    z-index: 1;
+}
+
+.carousel-img.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Arrow Controls */
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 15px;
+    z-index: 3;
+    pointer-events: none;
+    /* Lets you click the image behind if needed */
+}
+
+.carousel-btn {
+    pointer-events: auto;
+    /* Makes the buttons clickable */
+    background-color: rgba(12, 45, 72, 0.6);
+    /* Navy blue, slightly see-through */
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(217, 83, 79, 0.9);
+    /* Turns to your red accent on hover */
+    transform: scale(1.1);
+}
+
+/* =========================================
+   PROJECTS PAGE STYLES
+========================================= */
+.project-section {
+    padding: 80px 0;
+    background-color: var(--light-bg);
+}
+
+.project-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin-bottom: 30px;
+    border: 1px solid #e2e8f0;
+}
+
+/* Collapsible Button Header */
+.project-toggle {
+    width: 100%;
+    background: var(--primary-color);
+    color: white;
+    padding: 25px 30px;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.project-toggle:hover {
+    background-color: #0f3756;
+    /* Slightly lighter navy for hover effect */
+}
+
+.project-header-info h2 {
+    color: white;
+    margin: 0 0 5px 0;
+    font-size: 1.6rem;
+}
+
+.project-header-info p {
+    margin: 0;
+    color: var(--secondary-color);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.toggle-icon {
+    font-size: 2rem;
+    font-weight: 300;
+    transition: transform 0.3s ease;
+}
+
+/* Turns the + into an x when active */
+.project-toggle.active .toggle-icon {
+    transform: rotate(45deg);
+    color: var(--accent-color);
+}
+
+/* Content Container */
+.project-content {
+    display: none;
+    /* Hidden by default */
+    padding: 40px;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.project-description {
+    margin-bottom: 40px;
+}
+
+.project-description h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.project-description p {
+    color: #475569;
+    margin-bottom: 25px;
+    font-size: 1.05rem;
+}
+
+/* Image Grid */
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    text-align: center;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.02);
+    /* Slight pop on image hover */
+}
+
+.gallery-caption {
+    display: block;
+    margin-top: 12px;
+    font-size: 0.95rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Mobile Adjustments for Projects */
+@media (max-width: 768px) {
+    .project-toggle {
+        padding: 20px;
+    }
+
+    .project-header-info h2 {
+        font-size: 1.3rem;
+    }
+
+    .project-content {
+        padding: 20px;
+    }
+}
+
+/* =========================================
+   FAQ PAGE STYLES
+========================================= */
+.faq-section {
+    padding: 80px 0;
+    background-color: var(--light-bg);
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: white;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+.faq-question {
+    width: 100%;
+    background: white;
+    color: var(--primary-color);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.15rem;
+    padding: 25px 30px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #f8fafc;
+}
+
+.faq-icon {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--accent-color);
+    transition: transform 0.3s ease;
+}
+
+/* Turns the + into an x when active */
+.faq-question.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    background: white;
+}
+
+.faq-answer p {
+    padding: 0 30px 25px 30px;
+    margin: 0;
+    color: #475569;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
