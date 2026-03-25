@@ -2,70 +2,8 @@
 <html lang="en-GB">
 
 <head>
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MTZZ27EZZ"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-9MTZZ27EZZ');
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "RoofingContractor",
-      "name": "Best Roofing Ltd",
-      "url": "https://www.bestroofingltd.co.uk",
-      "telephone": "01227 806122",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "19 Bossington Road",
-        "addressLocality": "Adisham, Canterbury",
-        "addressRegion": "Kent",
-        "postalCode": "CT3 3LL",
-        "addressCountry": "UK"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 51.25,
-        "longitude": 1.20
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday"
-        ],
-        "opens": "07:00",
-        "closes": "17:00"
-      },
-      "areaServed": [
-        "Canterbury",
-        "Whitstable",
-        "Herne Bay",
-        "Faversham",
-        "Ashford",
-        "Dover",
-        "Folkestone",
-        "Deal",
-        "Sandwich",
-        "Margate",
-        "Ramsgate",
-        "Broadstairs",
-        "Hythe",
-        "Sittingbourne",
-        "Maidstone"
-      ]
-    }
-    </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Recent Roofing Projects | Best Roofing Ltd Canterbury</title>
     <meta name="description"
@@ -73,77 +11,68 @@
     <meta name="keywords"
         content="Roofing Projects Kent, Flat Roof Repair Canterbury, Roof Before After, Best Roofing Ltd Portfolio">
     <meta name="author" content="Best Roofing Ltd">
+    <meta property="og:title" content="Best Roofing Ltd | Kent & Canterbury Roofers">
+    <meta property="og:description"
+        content="View our recent roofing projects in Canterbury and Kent. See our work on flat roof repairs, new installations, and emergency leak fixes. Quality workmanship guaranteed.">
+    <meta property="og:image" content="images/slate-roof-hero.jpg">
+    <meta property="og:url" content="https://www.bestroofingltd.co.uk/projects.html">
+    <meta property="og:type" content="website">
+    <meta name="robots" content="index, follow">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="style.css">
 
-    <style>
-        .project-section {
-            padding: 60px 0;
-            background-color: #f9f9f9;
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MTZZ27EZZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9MTZZ27EZZ');
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Recent Roofing Projects in Kent",
+      "description": "A portfolio of recent roofing installations, flat roof repairs, and leadwork by Best Roofing Ltd in Canterbury and surrounding areas.",
+      "url": "https://www.bestroofingltd.co.uk/projects.html",
+      "publisher": {
+        "@type": "RoofingContractor",
+        "name": "Best Roofing Ltd",
+        "telephone": "01227 806122",
+        "url": "https://www.bestroofingltd.co.uk",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "19 Bossington Road",
+          "addressLocality": "Adisham, Canterbury",
+          "addressRegion": "Kent",
+          "postalCode": "CT3 3LL",
+          "addressCountry": "UK"
         }
-
-        .project-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            margin-bottom: 40px;
-        }
-
-        .project-header {
-            background: #003366;
-            color: white;
-            padding: 20px;
-        }
-
-        .project-header h2 {
-            margin: 0;
-            font-size: 1.5rem;
-        }
-
-        .project-header p {
-            margin: 5px 0 0;
-            opacity: 0.9;
-            font-size: 0.9rem;
-        }
-
-        .project-details {
-            padding: 20px;
-        }
-
-        .project-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            padding: 20px;
-        }
-
-        .gallery-item {
-            text-align: center;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-        }
-
-        .gallery-caption {
-            display: block;
-            margin-top: 8px;
-            font-size: 0.9rem;
-            color: #555;
-            font-weight: bold;
-        }
-
-        .project-description {
-            padding: 0 20px 20px;
-            color: #444;
-            line-height: 1.6;
-        }
-    </style>
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "Flat Roof Repair & Insulation Upgrade",
+              "description": "Complete strip back to structural timber, installation of warm roof insulation boards, and multi-layer high-performance felt system in Canterbury, Kent.",
+              "image": "https://www.bestroofingltd.co.uk/images/final_layer.jpg"
+            }
+          }
+        ]
+      }
+    }
+    </script>
 </head>
 
 <body>
@@ -168,69 +97,78 @@
 
             <nav>
                 <ul class="nav-links" id="nav-links">
-                    <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
-                    <li><a href="index.html#services" onclick="toggleMenu()">Services</a></li>
-                    <li><a href="index.html#about" onclick="toggleMenu()">About</a></li>
-                    <li><a href="projects.html" class="active" onclick="toggleMenu()">Projects</a></li>
-                    <li><a href="faq.html" onclick="toggleMenu()">FAQ</a></li>
-                    <li><a href="#contact" class="cta-button" onclick="toggleMenu()">Get a Quote</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="projects.html" style="color: var(--secondary-color);">Projects</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="#contact" class="cta-button">Get a Quote</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <section id="home" class="hero"
-        style="background-image: linear-gradient(rgba(0,51,102,0.7), rgba(0,51,102,0.7)), url('images/water_leak.webp');">
-        <div class="container">
-            <h1>Our Latest Roofing Projects</h1>
-            <p style="font-size: 1.3rem; margin-top: 15px;">Don't wait for disaster to strike, give us a call for a
-                free, no obligation quote.</p>
-            <a href="#contact" class="cta-button">Contact Us Today</a>
+        style="background: linear-gradient(rgba(12, 45, 72, 0.8), rgba(12, 45, 72, 0.6)), url('images/Projects page/hero.jpg') center/cover;">
+        <div class="container hero-content">
+            <span class="hero-subtitle">Our Portfolio</span>
+            <h1>Latest Roofing Projects</h1>
+            <p>Don't wait for disaster to strike. Browse our recent transformations across Kent and contact us for a
+                free quote today.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="cta-button primary">Contact Us Today</a>
+            </div>
         </div>
     </section>
 
     <section id="projects" class="project-section">
         <div class="container">
-            <h2 class="section-title">Recent Work in Canterbury</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">Take a look at some of our recent
-                installations and repairs. We take pride in transparency, showing you exactly what happens at every
-                stage of the roof repair process.</p>
+            <h2 class="section-title">Recent Work in Canterbury & Kent</h2>
+            <p class="lead-text" style="text-align: center; margin-bottom: 50px;">
+                Take a look at some of our recent installations and repairs. We take pride in transparency, showing you
+                exactly what happens at every stage of the roof repair process. Click a project below to see the
+                details.
+            </p>
 
             <div class="project-card">
-                <div class="project-header">
-                    <h2>Flat Roof Repair & Insulation Upgrade</h2>
-                    <p>Location: Canterbury, Kent | Service: Flat Roofing Repair</p>
-                </div>
+                <button class="project-toggle">
+                    <div class="project-header-info">
+                        <h2>Flat Roof Repair & Insulation Upgrade</h2>
+                        <p>Location: Canterbury, Kent | Service: Flat Roofing Repair</p>
+                    </div>
+                    <span class="toggle-icon">+</span>
+                </button>
 
-                <div class="project-description">
-                    <h3>The Problem</h3>
-                    <p>This customer in Canterbury contacted us with a leaking flat roof that was causing damp issues in
-                        the ceiling below. The old felt system had failed due to age and weathering, leading to water
-                        ingress and poor thermal efficiency.</p>
+                <div class="project-content">
+                    <div class="project-description">
+                        <h3>The Problem</h3>
+                        <p>This customer in Canterbury contacted us with a leaking flat roof that was causing damp
+                            issues in the ceiling below. The old felt system had failed due to age and weathering,
+                            leading to water ingress and poor thermal efficiency.</p>
 
-                    <h3>The Solution</h3>
-                    <p>We completely stripped the roof back to the structural timber to inspect for rot. We then
-                        installed high-performance warm roof insulation boards to improve the home's energy efficiency.
-                        Finally, we laid a multi-layer high-performance felt system, fully bonded with hot bitumen for a
-                        watertight, long-lasting finish.</p>
-                </div>
-
-                <div class="project-gallery">
-                    <div class="gallery-item">
-                        <img src="images/flatroofproject_before.webp"
-                            alt="Flat roof stripped back showing timber deck in Canterbury">
-                        <span class="gallery-caption">Step 1: Stripping back to deck</span>
+                        <h3>The Solution</h3>
+                        <p>We completely stripped the roof back to the structural timber to inspect for rot. We then
+                            installed high-performance warm roof insulation boards to improve the home's energy
+                            efficiency. Finally, we laid a multi-layer high-performance felt system, fully bonded with
+                            hot bitumen for a watertight, long-lasting finish.</p>
                     </div>
 
-                    <div class="gallery-item">
-                        <img src="images/flatroof_1st_layer.jpg"
-                            alt="Installing warm roof insulation boards for energy efficiency and added 1st layer of felt in Canterbury">
-                        <span class="gallery-caption">Step 2: Installing Insulation and 1st layer of felt</span>
-                    </div>
-
-                    <div class="gallery-item">
-                        <img src="images/final_layer.jpg" alt="Finished high performance felt flat roof in Canterbury">
-                        <span class="gallery-caption">Step 3: The Finished Watertight Roof - 3rd layer</span>
+                    <div class="project-gallery">
+                        <div class="gallery-item">
+                            <img src="images/flatroofproject_before.webp"
+                                alt="Flat roof stripped back showing timber deck in Canterbury" loading="eager">
+                            <span class="gallery-caption">Step 1: Stripping back to deck</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/flatroof_1st_layer.jpg" alt="Installing warm roof insulation boards"
+                                loading="eager">
+                            <span class="gallery-caption">Step 2: Installing Insulation & Base Layer</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/final_layer.jpg" alt="Finished high performance felt flat roof"
+                                loading="eager">
+                            <span class="gallery-caption">Step 3: The Finished Watertight Roof</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -240,58 +178,82 @@
 
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Get a Free Quote</h2>
+            <h2 class="section-title">Request Your Free Quote</h2>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Contact Details</h3>
-                    <p><strong>Email:</strong> info@bestroofingltd.co.uk</p>
-                    <p><strong>Phone:</strong> 01227 806122</p>
-                    <p><strong>Area:</strong> Canterbury, Kent & Surrounding Areas</p>
-                    <div style="margin-top: 20px;">
-                        <p><strong>Opening Hours:</strong></p>
+                    <div class="info-card">
+                        <h3>Contact Details</h3>
+                        <p><strong>Email:</strong> <a
+                                href="mailto:info@bestroofingltd.co.uk">info@bestroofingltd.co.uk</a></p>
+                        <p><strong>Phone:</strong> <a href="tel:01227806122">01227 806122</a></p>
+                        <p><strong>Area:</strong> Canterbury, Kent & Surrounding</p>
+                        <hr>
+                        <h3>Opening Hours</h3>
                         <p>Mon - Fri: 7:00 - 17:30</p>
                         <p>Sat & Sun: 8:00 - 17:30</p>
                     </div>
                 </div>
 
                 <div class="contact-form">
-                    <form action="https://api.web3forms.com/submit" method="POST">
+                    <form action="https://api.web3forms.com/submit" method="POST" class="elegant-form">
                         <input type="hidden" name="access_key" value="e302cd88-66d5-494f-ae09-132fd923168b">
                         <input type="hidden" name="subject" value="New Quote Request - Best Roofing Ltd">
                         <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
-                        <input type="text" name="name" placeholder="Your Name" required>
-                        <input type="email" name="email" placeholder="Your Email" required>
-                        <input type="tel" name="phone" placeholder="Phone Number">
-                        <textarea name="message" rows="5"
-                            placeholder="How can we help? (e.g. Leaking roof in Canterbury)" required></textarea>
-
-                        <button type="submit">Send Message</button>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="e.g. John Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="e.g. john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="e.g. 07123 456789">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">How can we help?</label>
+                            <textarea id="message" name="message" rows="4"
+                                placeholder="e.g. I have a leaking flat roof..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn cta-button primary">Send Message</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer style="background: #222; color: #fff; padding: 40px 0; font-size: 0.9rem;">
-        <div class="container"
-            style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px;">
-
-            <div class="footer-info">
-                <p>&copy; 2026 <strong>Best Roofing Ltd</strong>. All Rights Reserved.</p>
-                <p>Registered in England & Wales. Company No: <strong>14284297</strong></p>
-                <p>Registered Office: Berry & Co Sterling House, 7 Ashford Road, Maidstone, Kent, United Kingdom, ME14
-                    5BJ</p>
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4 class="footer-heading">Best Roofing Ltd</h4>
+                <p>&copy; 2026 All Rights Reserved.</p>
+                <p>Company No: <strong>14284297</strong></p>
+                <p class="address">Berry & Co Sterling House, 7 Ashford Road,<br>Maidstone, Kent, ME14 5BJ</p>
             </div>
-
-            <div class="footer-links">
-                <a href="privacy.html" style="color: #b1c7d6; text-decoration: underline;">Privacy Policy</a>
+            <div class="footer-col">
+                <h4 class="footer-heading">Useful Links</h4>
+                <ul class="footer-links-list">
+                    <li><a href="index.html#services">Our Services</a></li>
+                    <li><a href="projects.html">Projects Portfolio</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
             </div>
-
+            <div class="footer-col">
+                <h4 class="footer-heading">Connect With Us</h4>
+                <ul class="footer-links-list">
+                    <li><a href="#" target="_blank">Facebook</a></li>
+                    <li><a href="#" target="_blank">Checkatrade</a></li>
+                    <li><a href="https://share.google/PCNZCtAptnldrezgN" target="_blank" class="gmb-link">⭐ Google
+                            Business Profile</a></li>
+                </ul>
+            </div>
         </div>
     </footer>
 
-    <a href="tel:01227 806122" class="sticky-call-btn">
+    <a href="tel:01227806122" class="sticky-call-btn">
         <span>📞</span> Call Us Now
     </a>
 
